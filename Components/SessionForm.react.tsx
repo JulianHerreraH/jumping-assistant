@@ -51,30 +51,30 @@ function SessionForm({ onSubmit }: Props) {
         <TextInput
           style={styles.input}
           placeholder="e.g. 50"
-          keyboardType="number-pad"
+          keyboardType="numeric"
           placeholderTextColor={theme.accentColor}
           onChangeText={v => setAmount(parseInt(v))}
         />
       </InputWrapper>
-      <Button
-        title="Add Session"
-        onPress={handleSubmit}
-        color={theme.accentColor}
-      />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Add Session"
+          onPress={handleSubmit}
+          color={theme.accentColor}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: 5,
+    width: '100%',
   },
   formTitle: {
     fontSize: 21,
     fontFamily: 'poppins-bold',
+    textAlign: 'center',
     marginVertical: 5,
     color: theme.textColor,
   },
@@ -90,6 +90,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 16,
     color: theme.accentColor,
+  },
+  buttonContainer: {
+    width: '80%',
+    alignSelf: 'center',
+    marginVertical: 7,
   },
 });
 

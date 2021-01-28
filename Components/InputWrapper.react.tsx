@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    marginVertical: 7,
+    marginVertical: 8,
     width: '100%',
   },
 });

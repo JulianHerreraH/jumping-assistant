@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import Svg, { SvgProps, Circle } from 'react-native-svg';
 import { mainTheme as theme } from '../Theme';
@@ -22,7 +22,7 @@ function SessionProgress(
   //console.log(progress);
   return (
     <View style={styles.root}>
-      <Svg width={radius * 2} height={radius * 2} {...props}>
+      <Svg width={radius * 2} height={radius * 2} {...props} style={styles.svg}>
         <Circle
           stroke="white"
           strokeDasharray={`${circumference} ${circumference}`}
@@ -45,6 +45,19 @@ const styles = StyleSheet.create({
     width: '100%',
     alignContent: 'center',
     alignItems: 'center',
+    backgroundColor: theme.accentColor,
+    borderRadius: 5,
+    marginVertical: 3,
+  },
+  svg: {
+    marginVertical: 7,
+  },
+  title: {
+    fontSize: 21,
+    fontFamily: 'poppins-bold',
+    textAlign: 'center',
+    marginVertical: 3,
+    color: theme.textColor,
   },
   text: {
     position: 'absolute',
