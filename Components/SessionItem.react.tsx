@@ -9,7 +9,27 @@ interface Props {
 }
 
 function SessionItem({ item }: Props) {
-  const totalTime = new Date(item.endTime - item.startTime);
+  const totalMillis = item.endTime - item.startTime;
+  const hours = Math.floor(totalMillis / 1000 / 3600);
+  const minutes = formatTime((totalMillis / 1000 / 60) % 60);
+  const seconds = formatTime((totalMillis / 1000) % 60);
+
+  console.log(hours, minutes, seconds);
+
+  function getFinalTime(): string {
+    if (hours == 0 && minutes == 0) {
+      return `${seconds} secs.`;
+    } else if (hours == 0) {
+      return `${minutes}:${seconds} mins.`;
+    } else {
+      return `${hours}: ${minutes}: ${seconds} hours.`;
+    }
+  }
+
+  function formatTime(time: number): number {
+    const format = time < 10 ? `0${time}` : time.toString();
+    return parseInt(format);
+  }
 
   return (
     <View style={styles.root}>
@@ -24,9 +44,7 @@ function SessionItem({ item }: Props) {
         </Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.text}>
-          Total time: {totalTime.getSeconds()} secs
-        </Text>
+        <Text style={styles.text}>Total time: {getFinalTime()}</Text>
       </View>
     </View>
   );
